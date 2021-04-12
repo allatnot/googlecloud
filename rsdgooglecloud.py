@@ -171,7 +171,7 @@ class RsdGoogleColudBackup:
         else:
             sys.exit()
         frt = first_upload.upper()
-        rec = record+'/records'
+        rec = record+'/records_{}'.format(bucket_name)
         if not os.path.exists(rec):
             os.mkdir(rec)
             print('The dir {} created!'.format(rec))
