@@ -18,3 +18,5 @@
 # files = path where files are exit those to be uploaded
 # location = google cloud location where the bucket exists
 # prefix = the name of folder needs to be created inside the google cloud bucket
+# record = the path where you want to keep the record of the uploaded files. 
+# first_upload = 'y' if yes or 'n' if no. 
