@@ -153,7 +153,7 @@ class RsdGoogleColudBackup:
         
         print('The data backing up has been successfully completed! You can find the files inside the folders in {}'.format(path))
         return
-    def RsdGoogleCloudUpload(self,bucket_name, files, location, prefix):
+    def RsdGoogleCloudUpload(self,bucket_name, files, location, prefix, record,first_upload = 'y'):
         client = self.client
         bks = []
         for bucket in client.list_buckets():
@@ -169,13 +169,40 @@ class RsdGoogleColudBackup:
         if co == "Y":
             print('Processing...')
         else:
-            sys.exit
-            
+            sys.exit()
+        frt = first_upload.upper()
+        rec = record+'/records'
+        if not os.path.exists(rec):
+            os.mkdir(rec)
+            print('The dir {} created!'.format(rec))
+        if frt == 'Y':
+            with open('{}/uploaded_files.txt'.format(rec), 'wt') as f:
+                f.close()
+        else:
+            fl = '{}/uploaded_files.txt'.format(rec)
+        try:
+            hj = open('{}/uploaded_files.txt'.format(rec))
+            jj = hj.read()
+            jj = jj.split('\n')
+            jj = jj[:-1]
+            hj.close()
+        except FileNotFoundError:
+            print('uploaded_files.txt not found. May be this is your first upload! Please proceed with first_upload=y')
+            sys.exit()
         print('Files are uploading...')
+        
         bks = client.get_bucket(bucket_name)
         for i in os.listdir(files):
-            bss = files+'/'+i
-            bls = bks.blob(bss)
-            bls.upload_from_filename(bss)
-            bks.rename_blob(bls, '{}/{}'.format(prefix, i))
-        return    
+            if i not in jj:
+                bss = files+'/'+i
+                bls = bks.blob(bss)
+                bls.upload_from_filename(bss)
+                bks.rename_blob(bls, '{}/{}'.format(prefix, i))
+            else:
+                print('{} already uploaded'.format(i))
+        new_en = [kk for kk in os.listdir(files) if kk not in jj]
+        with open('{}/uploaded_files.txt'.format(rec), 'a') as ju:
+            for kmm in new_en:
+                ju.write('{}\n'.format(kmm))
+            ju.close()
+        return   
