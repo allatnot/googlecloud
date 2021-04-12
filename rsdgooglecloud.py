@@ -3,15 +3,16 @@ import os
 import sys
 from google.cloud.storage import Bucket
 class RsdGoogleColudBackup:
-    
+    # create rsdGoogleCloudBackup object with google account key
     def __init__(self,key):
         '''
-           key = give the path where google cloud key exists
+           key = give the path where google cloud account key exists
         '''
         self.key = key
         os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = key
         self.client = storage.Client()
-        
+   
+    # method to obtain bucket prefix  
     def RsdGetGoogleBucketPrefix(self, bucket):
         '''
             provide the bucket name
@@ -29,7 +30,7 @@ class RsdGoogleColudBackup:
         uns = set(rd)
         prefix = list(uns)
         return prefix
-        
+    # method to download files from teh google cloud bucket  
     def RsdGoogleCloudDownload(self,path,bucket,sub_directory='n',first_time_backup = 'y'):
         '''
         path = path where you want to save downloaded files.
@@ -169,7 +170,8 @@ class RsdGoogleColudBackup:
             print('Processing...')
         else:
             sys.exit
-        
+            
+        print('Files are uploading...')
         bks = client.get_bucket(bucket_name)
         for i in os.listdir(files):
             bss = files+'/'+i
