@@ -1,6 +1,7 @@
 from google.cloud import storage
 import os
 import sys
+from google.cloud.storage import Bucket
 class RsdGoogleColudBackup:
     
     def __init__(self,key):
@@ -151,5 +152,28 @@ class RsdGoogleColudBackup:
         
         print('The data backing up has been successfully completed! You can find the files inside the folders in {}'.format(path))
         return
+    def RsdGoogleCloudUpload(self,bucket_name, files, location, prefix):
+        client = self.client
+        bks = []
+        for bucket in client.list_buckets():
+            bks.append(bucket)
+        bkd = [str(i).split(':')[1][1:-1] for i in bks]
+        if bucket_name not in bkd:
+            bucs = Bucket(client, name = bucket_name)
+            bucs.create(location = location)
+            co = "Y"
+        else:
+            co = input("The bucket is already exist. Do you want to  proceed? Enter 'y' for yes or 'n' for no and hit enter: ")
+            co = co.upper()
+        if co == "Y":
+            print('Processing...')
+        else:
+            sys.exit
         
-    
+        bks = client.get_bucket(bucket_name)
+        for i in os.listdir(files):
+            bss = files+'/'+i
+            bls = bks.blob(bss)
+            bls.upload_from_filename(bss)
+            bks.rename_blob(bls, '{}/{}'.format(prefix, i))
+        return    
