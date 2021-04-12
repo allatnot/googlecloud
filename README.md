@@ -1,5 +1,5 @@
 # googlecloud
-# the scripts makes a backup of files and uploads the files in the google cloud. it automatically creates folders according to the prefix in the google bucket and saves everyting inside the folder named after the bucket. The script is capable of only downloading and uploading only new files insted of whole files if the backup and uploading have already initiated.
+# the scripts makes a backup of files and uploads the files in the google cloud. it automatically creates folders according to the prefix in the google bucket and saves everyting inside the folder named after the bucket. The script is capable of only downloading and uploading new files insted of whole files if the backup and uploading have already initiated.
 
 # the code creates RsdGoogleClooudBackup object which needs following paramter
 # path = to google account service key file path as a paramter.
