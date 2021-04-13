@@ -22,6 +22,8 @@
 # record = the path where you want to keep the record of the uploaded files. 
 # first_upload = 'y' if yes or 'n' if no. 
 
+
+
 # rsdgooglecloudbigquery
 # the script creates the google bigquery table based on the schema provided externally as .txt file and uploads the data in it.
 # the class RsdGoogleBigquery creates a RsdGoogleBigquery object which needs following parameter
