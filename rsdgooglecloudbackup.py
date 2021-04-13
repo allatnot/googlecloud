@@ -153,7 +153,7 @@ class RsdGoogleColudBackup:
         
         print('The data backing up has been successfully completed! You can find the files inside the folders in {}'.format(path))
         return
-    def RsdGoogleCloudUpload(self,bucket_name, files, location, prefix, record,first_upload = 'y'):
+    def RsdGoogleCloudUpload(self,bucket_name, files, prefix, record,first_upload = 'y', location = None):
         client = self.client
         bks = []
         for bucket in client.list_buckets():
