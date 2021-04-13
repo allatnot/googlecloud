@@ -16,7 +16,7 @@ the script makes a backup of files and uploads the files in the google cloud. it
 #### the method RsdGoogleCloudUpload could be used to create a bucket if not exists and upload files and requires following parameters
 #### bucket_name = the name of bucket you wish to create or already exist bucket
 #### files = full path where files exist those to be uploaded
-#### location = google cloud location where the bucket should exit and ignore if bcuket is already exits.
+#### location = google cloud location where the bucket should exit or ignore if bcuket is already exits.
 #### prefix = the name of folder needs to be created inside the google cloud bucket
 #### record = the path where you want to keep the record of the uploaded files. 
 #### first_upload = 'y' if yes or 'n' if no.                                                                                                                                         
