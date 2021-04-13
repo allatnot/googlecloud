@@ -1,5 +1,4 @@
 import os
-import pandas as pd
 from google.cloud import bigquery
 class RsdGoogleBigquery:
     def __init__(self, key):
