@@ -35,7 +35,7 @@ class RsdGoogleBigquery:
             print('The table is already exist!')
         return
     
-    def RsdGoogleBigqueryLoad(self,table_id, schema, file):
+    def RsdGoogleBigqueryLoad(self,table_id, schema, file, disposition='WRITE_TRUNCATE'):
         qclient = self.qclient
         smp = open(schema, 'r')
         smp = smp.read()
@@ -51,7 +51,7 @@ class RsdGoogleBigquery:
             skd.append(bigquery.SchemaField(i,j, mode = 'NULLABLE'))
     
         job_config = bigquery.LoadJobConfig(
-                     schema = skd,skip_leading_rows = 1,write_dispositon = bigquery.WriteDisposition.WRITE_TRUNCATE, 
+                     schema = skd,skip_leading_rows = 1,write_dispositon = disposition, 
                               source_format = bigquery.SourceFormat.CSV,
                           )
         with open(file, 'rb') as rsk:
