@@ -20,9 +20,7 @@
 # location = google cloud location where the bucket exists
 # prefix = the name of folder needs to be created inside the google cloud bucket
 # record = the path where you want to keep the record of the uploaded files. 
-# first_upload = 'y' if yes or 'n' if no. 
-#
-#
+# first_upload = 'y' if yes or 'n' if no.                                                                                                                                                                                                                                                                                                                        
 
 # 2. rsdgooglecloudbigquery
 # the script creates the google bigquery table based on the schema provided externally as .txt file and uploads the data in it.
