@@ -1,7 +1,7 @@
-# googlecloud
+# rsdgooglecloudbackup
 # the scripts makes a backup of files and uploads the files in the google cloud. it automatically creates folders according to the prefix in the google bucket and saves everyting inside the folder named after the bucket. The script is capable of only downloading and uploading new files insted of whole files if the backup and uploading have already initiated.
 
-# the code creates RsdGoogleClooudBackup object which needs following paramter
+# the code creates RsdGoogleClooudBackup object, which needs following paramter
 # path = to google account service key file path as a paramter.
 
 # the method RsdGoogleBucketPrefix could be used to get the name of prefix in the google colud bucket and requires following parameter
@@ -21,3 +21,19 @@
 # prefix = the name of folder needs to be created inside the google cloud bucket
 # record = the path where you want to keep the record of the uploaded files. 
 # first_upload = 'y' if yes or 'n' if no. 
+
+# rsdgooglecloudbigquery
+# the script creates the google bigquery table based on the schema provided externally as .txt file and uploads the data in it.
+# the class RsdGoogleBigquery creates a RsdGoogleBigquery object which needs following parameter
+# key = the path where google cloud service account key file exists.
+
+# the method RsdCreateBigqueryTable creates the bigquery table with provided schema, which needs following parameters.
+# table_dataset = name of the dataset followed by project id.
+# table = name of the table
+# schema = the text file where schmea exists
+
+# the method RsdGoogleBigqueryLoad uploades the table in teh google bigquery table and needs following parameters
+# table_id = table id followed by project and dataset
+# schema = text file that contains the schema
+# file = path to the csv file that needs to be uploaded
+# dispositon = one out of WRITE_TRNCATE, WRITE_APPEND, WRITE_EMPTY, the default parameter is WRITE_TRUNCATE
