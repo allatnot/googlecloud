@@ -1,4 +1,4 @@
-# rsdgooglecloudbackup
+# 1. rsdgooglecloudbackup
 # the scripts makes a backup of files and uploads the files in the google cloud. it automatically creates folders according to the prefix in the google bucket and saves everyting inside the folder named after the bucket. The script is capable of only downloading and uploading new files insted of whole files if the backup and uploading have already initiated.
 
 # the code creates RsdGoogleClooudBackup object, which needs following paramter
@@ -24,7 +24,7 @@
 
 
 
-# rsdgooglecloudbigquery
+# 2. rsdgooglecloudbigquery
 # the script creates the google bigquery table based on the schema provided externally as .txt file and uploads the data in it.
 # the class RsdGoogleBigquery creates a RsdGoogleBigquery object which needs following parameter
 # key = the path where google cloud service account key file exists.
