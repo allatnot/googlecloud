@@ -2,7 +2,7 @@ from google.cloud import storage
 import os
 import sys
 from google.cloud.storage import Bucket
-class RsdGoogleColudBackup:
+class RsdGoogleCloudBackup:
     # create rsdGoogleCloudBackup object with google account key
     def __init__(self,key):
         '''
