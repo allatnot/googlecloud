@@ -8,7 +8,7 @@ class RsdGoogleBigquery:
     def RsdCreateBigqueryTable(self,table_dataset,table, schema):
         qclient = self.qclient
         table_id = table_dataset+'.'+table
-        tables = client.list_tables(table_dataset)
+        tables = qclient.list_tables(table_dataset)
         lst = []
         for rsd in tables:
             kmr = rsd.project+'.'+rsd.dataset_id+'.'+rsd.table_id
